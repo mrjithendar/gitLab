@@ -48,7 +48,8 @@ global:
     labels: {}
 
   ## https://docs.gitlab.com/charts/installation/deployment#deploy-the-community-edition
-  edition: ee
+  ## I have chabged the edition to community edition because enterprise edition is paid
+  edition: ce #ee
 
   ## https://docs.gitlab.com/charts/charts/globals#gitlab-version
   gitlabVersion: "16.8.2"
@@ -60,9 +61,9 @@ global:
     allowClusterRoles: true
   ## https://docs.gitlab.com/charts/charts/globals#configure-host-settings
   hosts:
-    domain: example.com
+    domain: decodedevops.com
     hostSuffix:
-    https: true
+    https: false #true
     externalIP:
     ssh: ~
     gitlab: {}
@@ -76,16 +77,16 @@ global:
   ## https://docs.gitlab.com/charts/charts/globals#configure-ingress-settings
   ingress:
     apiVersion: ""
-    configureCertmanager: true
+    configureCertmanager: false #true
     useNewIngressForCerts: false
-    provider: nginx
-    # class:
+    # provider: nginx
+    class: alb
     annotations: {}
     enabled: true
     tls: {}
     #   enabled: true
     #   secretName:
-    path: /
+    path: /gitlab
     pathType: Prefix
 
   # Override the API version to use for HorizontalPodAutoscaler
@@ -878,10 +879,10 @@ upgradeCheck:
   priorityClassName: ""
 
 ## Settings to for the Let's Encrypt ACME Issuer
-# certmanager-issuer:
-#   # The email address to register certificates requested from Let's Encrypt.
-#   # Required if using Let's Encrypt.
-#   email: email@example.com
+certmanager-issuer:
+  # The email address to register certificates requested from Let's Encrypt.
+  # Required if using Let's Encrypt.
+  email: team@decodedevops.com
 
 ## Installation & configuration of jetstack/cert-manager
 ## See requirements.yaml for current version
