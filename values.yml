@@ -89,8 +89,8 @@ global:
       alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/target-type: ip
     enabled: true
-    tls: {}
-    #   enabled: true
+    tls:
+      enabled: false #true
     #   secretName:
     path: /*
     pathType: Prefix
