@@ -75,6 +75,7 @@ global:
     pages: {}
 
   ## https://docs.gitlab.com/charts/charts/globals#configure-ingress-settings
+  ## gitlab ingress setting or configuration
   ingress:
     apiVersion: ""
     configureCertmanager: false #true
@@ -86,7 +87,7 @@ global:
     tls: {}
     #   enabled: true
     #   secretName:
-    path: /gitlab
+    path: /*
     pathType: Prefix
 
   # Override the API version to use for HorizontalPodAutoscaler

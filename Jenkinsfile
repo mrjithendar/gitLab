@@ -15,7 +15,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy ArgoCD') {
+        stage('Deploy gitLab') {
             steps {
                 withAWS(credentials: 'awsCreds', region: 'us-east-1') {
                     sh "sh install.sh"
