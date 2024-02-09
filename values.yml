@@ -80,8 +80,8 @@ global:
     apiVersion: ""
     configureCertmanager: false #true
     useNewIngressForCerts: false
-    # provider: nginx
-    class: alb
+    provider: nginx
+    class: ""
     annotations: {}
     enabled: true
     tls: {}
