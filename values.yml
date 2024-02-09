@@ -81,7 +81,7 @@ global:
     configureCertmanager: false #true
     useNewIngressForCerts: false
     provider: nginx
-    class: ""
+    class: "gitlab-nginx"
     annotations: {}
     enabled: true
     tls: {}
