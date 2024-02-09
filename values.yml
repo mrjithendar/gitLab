@@ -80,8 +80,8 @@ global:
     apiVersion: ""
     configureCertmanager: false #true
     useNewIngressForCerts: false
-    # provider: nginx
-    class: "alb"
+    provider: alb
+    class: alb
     annotations:
       alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=roboshop-awslogs-demo,access_logs.s3.prefix=eks
       # alb.ingress.kubernetes.io/subnets:
