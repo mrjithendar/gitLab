@@ -9,7 +9,7 @@ helm ls -n $APP | grep $APP
 
 if [ $? -eq 0 ]; then
   echo "$APP installed already, trying to upgrade $APP."
-  helm upgrade $APP $APP/$APP -n $APP --set global.hosts.domain=$APP.decodedevops.com \
+  helm upgrade $APP $APP/$APP -n $APP --set global.hosts.domain=decodedevops.com \
        --set certmanager-issuer.email=team@decodedevops.com --set global.edition=ce --create-namespace
   echo "$APP upgraded successfully"
   kubectl get svc -l app=nginx-ingress -n $APP
@@ -19,7 +19,7 @@ if [ $? -eq 0 ]; then
     echo "$APP installing"
     helm repo add $APP https://charts.$APP.io/
     helm repo update
-    helm install $APP $APP/$APP -n $APP --set global.hosts.domain=$APP.decodedevops.com \
+    helm install $APP $APP/$APP -n $APP --set global.hosts.domain=decodedevops.com \
          --set certmanager-issuer.email=team@decodedevops.com --set global.edition=ce --create-namespace
     sleep 10
     echo "$APP installed successfully"
