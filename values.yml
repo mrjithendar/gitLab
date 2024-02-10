@@ -62,7 +62,7 @@ global:
   hosts:
     domain: decodedevops.com
     hostSuffix:
-    https: true
+    https: false
     externalIP:
     ssh: ~
     gitlab: {}
