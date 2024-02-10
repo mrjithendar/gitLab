@@ -12,7 +12,7 @@ helm ls -n $APP | grep $APP
 
 if [ $? -eq 0 ]; then
   echo "$APP installed already, trying to upgrade $APP."
-  helm upgrade install $APP $APP/$APP -n $APP --create-namespace --value=values.yml
+  helm upgrade install $APP $APP/$APP -n $APP --create-namespace --values=values.yml
   echo "$APP upgraded successfully"
   kubectl get svc -l app=nginx-ingress -n $APP
   PASSWORD=$(kubectl get secret $APP-$APP-initial-root-password -o jsonpath='{.data.password}' -n $APP)
@@ -21,7 +21,7 @@ if [ $? -eq 0 ]; then
     echo "$APP installing"
     helm repo add $APP https://charts.$APP.io/
     helm repo update
-    helm install $APP $APP/$APP -n $APP --create-namespace --value=values.yml
+    helm install $APP $APP/$APP -n $APP --create-namespace --values=values.yml
     sleep 10
     echo "$APP installed successfully"
     kubectl get svc -l app=nginx-ingress -n $APP
