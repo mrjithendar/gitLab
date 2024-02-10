@@ -15,7 +15,7 @@ if [ $? -eq 0 ]; then
   # helm show values gitlab/gitlab > values.yml
   helm upgrade $APP $APP/$APP -n $APP --create-namespace --values=values.yml
   echo "$APP upgraded successfully"
-  kubectl get svc -l app=nginx-ingress -n $APP
+  kubectl get ingress -lrelease=gitlab -n $APP
   PASSWORD=$(kubectl get secret $APP-$APP-initial-root-password -o jsonpath='{.data.password}' -n $APP)
   echo "$APP Credentials Username: admin and Password is: $(echo $PASSWORD | base64 --decode)"
   else
@@ -26,7 +26,7 @@ if [ $? -eq 0 ]; then
     helm install $APP $APP/$APP -n $APP --create-namespace --values=values.yml
     sleep 10
     echo "$APP installed successfully"
-    kubectl get svc -l app=nginx-ingress -n $APP
+    kubectl get ingress -lrelease=gitlab -n $APP
     
     PASSWORD=$(kubectl get secret $APP-$APP-initial-root-password -o jsonpath='{.data.password}' -n $APP)
     echo "$APP Credentials Username: admin and Password is: $(echo $PASSWORD | base64 --decode)"
