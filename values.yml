@@ -81,7 +81,7 @@ global:
     provider: nginx
     # class:
     annotations: {}
-    enabled: true
+    enabled: false
     tls: {}
     #   enabled: true
     #   secretName:
