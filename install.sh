@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# link https://docs.$APP.com/charts/quickstart/
+# link https://docs.gitlab.com/charts/quickstart/
+# https://docs.gitlab.com/charts/installation/command-line-options.html
+
 
 APP="gitlab"
-DOMAIN="roboshop.com"
+DOMAIN="decodedevops.com"
 
 echo "checking $APP status"
 helm ls -n $APP | grep $APP
