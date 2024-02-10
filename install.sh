@@ -12,8 +12,8 @@ if [ $? -eq 0 ]; then
   helm upgrade $APP $APP/$APP -n $APP --set global.hosts.domain=$APP.decodedevops.com \
        --set certmanager-issuer.email=team@decodedevops.com --set global.edition=ce --create-namespace
   echo "$APP upgraded successfully"
-  kubectl get svc -l app=nginx-ingress
-  PASSWORD=$(kubectl get secret $APP-$APP-initial-root-password -o jsonpath='{.data.password}')
+  kubectl get svc -l app=nginx-ingress -n $APP
+  PASSWORD=$(kubectl get secret $APP-$APP-initial-root-password -o jsonpath='{.data.password}' -n $APP)
   echo "$APP Credentials Username: admin and Password is: $(echo $PASSWORD | base64 --decode)"
   else
     echo "$APP installing"
@@ -23,9 +23,9 @@ if [ $? -eq 0 ]; then
          --set certmanager-issuer.email=team@decodedevops.com --set global.edition=ce --create-namespace
     sleep 10
     echo "$APP installed successfully"
-    kubectl get svc -l app=nginx-ingress
+    kubectl get svc -l app=nginx-ingress -n $APP
     
-    PASSWORD=$(kubectl get secret $APP-$APP-initial-root-password -o jsonpath='{.data.password}')
+    PASSWORD=$(kubectl get secret $APP-$APP-initial-root-password -o jsonpath='{.data.password}' -n $APP)
     echo "$APP Credentials Username: admin and Password is: $(echo $PASSWORD | base64 --decode)"
 fi
 
