@@ -12,7 +12,7 @@ helm ls -n $APP | grep $APP
 
 if [ $? -eq 0 ]; then
   echo "$APP installed already, trying to upgrade $APP."
-  helm upgrade install $APP $APP/$APP -n $APP --create-namespace --values=values.yml
+  helm upgrade $APP $APP/$APP -n $APP --create-namespace --values=values.yml
   echo "$APP upgraded successfully"
   kubectl get svc -l app=nginx-ingress -n $APP
   PASSWORD=$(kubectl get secret $APP-$APP-initial-root-password -o jsonpath='{.data.password}' -n $APP)
