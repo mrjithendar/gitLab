@@ -11,7 +11,7 @@ if [ $? -eq 0 ]; then
        --set certmanager-issuer.email=team@decodedevops.com --set global.edition=ce
   echo "gitlab upgraded successfully"
   kubectl get svc -l app=nginx-ingress
-  PASSWORD=$(kubectl get secret gitlab-gitlab-initial-root-password --ojsonpath=’{.data.password}’)
+  PASSWORD=$(kubectl get secret gitlab-gitlab-initial-root-password -o jsonpath='{.data.password}')
   echo "gitlab Credentials Username: admin and Password is: $(echo $PASSWORD | base64 --decode)"
   else
     echo "gitlab installing"
@@ -23,7 +23,7 @@ if [ $? -eq 0 ]; then
     echo "gitlab installed successfully"
     kubectl get svc -l app=nginx-ingress
     
-    PASSWORD=$(kubectl get secret gitlab-gitlab-initial-root-password --ojsonpath=’{.data.password}’)
+    PASSWORD=$(kubectl get secret gitlab-gitlab-initial-root-password -o jsonpath='{.data.password}')
     echo "gitlab Credentials Username: admin and Password is: $(echo $PASSWORD | base64 --decode)"
 fi
 
