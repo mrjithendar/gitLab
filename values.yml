@@ -48,7 +48,7 @@ global:
     labels: {}
 
   ## https://docs.gitlab.com/charts/installation/deployment#deploy-the-community-edition
-  edition: ce #ee
+  edition: ee
 
   ## https://docs.gitlab.com/charts/charts/globals#gitlab-version
   gitlabVersion: "16.8.2"
@@ -61,7 +61,7 @@ global:
   ## https://docs.gitlab.com/charts/charts/globals#configure-host-settings
   hosts:
     domain: decodedevops.com
-    hostSuffix:
+    hostSuffix: demo
     https: false
     externalIP:
     ssh: ~
@@ -82,9 +82,9 @@ global:
     # class:
     annotations: {}
     enabled: false
-    tls: {}
-    #   enabled: true
-    #   secretName:
+    tls:
+      enabled: false
+      # secretName:
     path: /
     pathType: Prefix
 
