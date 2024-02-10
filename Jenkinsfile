@@ -19,6 +19,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'awsCreds', region: 'us-east-1') {
                     sh "sh install.sh"
+                    sh "kubectl apply -f ingress.yml"
                 }
             }
         }
