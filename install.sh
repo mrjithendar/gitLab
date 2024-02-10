@@ -30,3 +30,6 @@ if [ $? -eq 0 ]; then
     echo "$APP Credentials Username: admin and Password is: $(echo $PASSWORD | base64 --decode)"
 fi
 
+# aws route53 change-resource-record-sets \
+#   --hosted-zone-id Z10022573QBDSVQJ5PP1F \
+#   --change-batch '{"Changes":[{"Action":"CREATE","ResourceRecordSet":{"Name":"example.com.","Type":"A","TTL":300,"ResourceRecords":[{"Value":"<IPv4 address>"}]}}]}'
