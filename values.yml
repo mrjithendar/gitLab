@@ -61,8 +61,8 @@ global:
   ## https://docs.gitlab.com/charts/charts/globals#configure-host-settings
   hosts:
     domain: decodedevops.com
-    hostSuffix: demo
-    https: false
+    hostSuffix:
+    https: true
     externalIP:
     ssh: ~
     gitlab: {}
@@ -76,15 +76,15 @@ global:
   ## https://docs.gitlab.com/charts/charts/globals#configure-ingress-settings
   ingress:
     apiVersion: ""
-    configureCertmanager: false
+    configureCertmanager: true
     useNewIngressForCerts: false
     provider: nginx
     # class:
     annotations: {}
-    enabled: false
-    tls:
-      enabled: false
-      # secretName:
+    enabled: true
+    tls: {}
+    #   enabled: true
+    #   secretName:
     path: /
     pathType: Prefix
 
@@ -881,7 +881,7 @@ upgradeCheck:
 # certmanager-issuer:
 #   # The email address to register certificates requested from Let's Encrypt.
 #   # Required if using Let's Encrypt.
-#   email: team@decodedevops.com
+#   email: email@example.com
 
 ## Installation & configuration of jetstack/cert-manager
 ## See requirements.yaml for current version
@@ -890,7 +890,7 @@ certmanager:
   nameOverride: certmanager
   # Install cert-manager chart. Set to false if you already have cert-manager
   # installed or if you are not using cert-manager.
-  install: false
+  install: true
   # Other cert-manager configurations from upstream
   # See https://github.com/jetstack/cert-manager/blob/master/deploy/charts/cert-manager/README#configuration
   rbac:
@@ -900,7 +900,7 @@ certmanager:
 ## https://docs.gitlab.com/charts/architecture/decisions#nginx-ingress
 ## Installation & configuration of charts/ingress-nginx:
 nginx-ingress: &nginx-ingress
-  enabled: false
+  enabled: true
   tcpExternalConfig: "true"
   controller: &nginx-ingress-controller
     addHeaders:
@@ -997,7 +997,7 @@ haproxy:
 ## Installation & configuration of stable/prometheus
 ## See requirements.yaml for current version
 prometheus:
-  install: false
+  install: true
   rbac:
     create: true
   alertmanager:

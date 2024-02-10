@@ -12,6 +12,7 @@ helm ls -n $APP | grep $APP
 
 if [ $? -eq 0 ]; then
   echo "$APP installed already, trying to upgrade $APP."
+  # helm show values gitlab/gitlab > values.yml
   helm upgrade $APP $APP/$APP -n $APP --create-namespace --values=values.yml
   echo "$APP upgraded successfully"
   kubectl get svc -l app=nginx-ingress -n $APP
@@ -21,6 +22,7 @@ if [ $? -eq 0 ]; then
     echo "$APP installing"
     helm repo add $APP https://charts.$APP.io/
     helm repo update
+    # helm show values gitlab/gitlab > values.yml
     helm install $APP $APP/$APP -n $APP --create-namespace --values=values.yml
     sleep 10
     echo "$APP installed successfully"
