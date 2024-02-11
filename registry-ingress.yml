@@ -1,0 +1,50 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    acme.cert-manager.io/http01-edit-in-place: "true"
+    cert-manager.io/issuer: gitlab-issuer
+    kubernetes.io/ingress.provider: nginx
+    meta.helm.sh/release-name: gitlab
+    meta.helm.sh/release-namespace: gitlab
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "900"
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+  generation: 2
+  labels:
+    app: registry
+    app.kubernetes.io/managed-by: Helm
+    chart: registry-0.7.0
+    heritage: Helm
+    release: gitlab
+  name: gitlab-registry
+  namespace: gitlab
+spec:
+  ingressClassName: gitlab-nginx
+  rules:
+  - host: registry.decodedevops.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: cm-acme-http-solver-8nt5h
+            port:
+              number: 8089
+        path: /.well-known/acme-challenge/sRYPKxwD1nMvbCWLVRZ_8aloHEJ0_Qrd8NoX2xMJk5U
+        pathType: ImplementationSpecific
+      - backend:
+          service:
+            name: gitlab-registry
+            port:
+              number: 5000
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - registry.decodedevops.com
+    secretName: gitlab-registry-tls

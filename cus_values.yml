@@ -1,0 +1,36 @@
+global:
+  edition: ee 
+  kas:
+    enabled: false
+  hosts:
+    domain: decodedevops.com
+  ingress:
+    configureCertmanager: false
+    enabled: true
+    class: alb
+    annotations:
+      alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=roboshop-awslogs-demo,access_logs.s3.prefix=eks
+      # alb.ingress.kubernetes.io/group.name: roboshop
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/target-type: ip
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}, {"HTTP":80}]'
+    tls:
+      enabled: false
+  # service:
+  #   annotations:
+  #     beta.cloud.google.com/backend-config: '{"ports": {"8080":"load-balancer-config-webservice","8181":"load-balancer-config-workhorse"}}'
+
+gitlab:
+  webservice:
+    ingress:
+      requireBasePath: false
+    deployments:
+      default:
+        ingress:
+          path: /
+
+nginx-ingress:
+  enabled: false
+
+certmanager-issuer:
+  email: team@decodedevops.com

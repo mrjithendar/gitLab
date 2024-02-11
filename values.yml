@@ -60,7 +60,7 @@ global:
     allowClusterRoles: true
   ## https://docs.gitlab.com/charts/charts/globals#configure-host-settings
   hosts:
-    domain: decodedevops.com
+    domain: example.com
     hostSuffix:
     https: true
     externalIP:
@@ -587,7 +587,7 @@ global:
 
   ## https://docs.gitlab.com/charts/charts/gitlab/kas/
   kas:
-    enabled: false
+    enabled: true
     service:
       apiExternalPort: 8153 # port for connections from the GitLab backend
     tls:
@@ -878,10 +878,10 @@ upgradeCheck:
   priorityClassName: ""
 
 ## Settings to for the Let's Encrypt ACME Issuer
-certmanager-issuer:
-  # The email address to register certificates requested from Let's Encrypt.
-  # Required if using Let's Encrypt.
-  email: team@decodedevops.com
+# certmanager-issuer:
+#   # The email address to register certificates requested from Let's Encrypt.
+#   # Required if using Let's Encrypt.
+#   email: email@example.com
 
 ## Installation & configuration of jetstack/cert-manager
 ## See requirements.yaml for current version
