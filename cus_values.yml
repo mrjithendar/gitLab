@@ -10,7 +10,7 @@ global:
     class: alb
     annotations:
       alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=roboshop-awslogs-demo,access_logs.s3.prefix=eks
-      alb.ingress.kubernetes.io/group.name: gitlab
+      alb.ingress.kubernetes.io/group.name: roboshop
       alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/target-type: ip
       # alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}, {"HTTP":80}]' #certificate arn is required
