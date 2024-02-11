@@ -5,7 +5,7 @@ global:
   hosts:
     domain: decodedevops.com
   ingress:
-    configureCertmanager: false
+    configureCertmanager: true
     enabled: true
     class: alb
     annotations:
