@@ -1,5 +1,5 @@
 ## NOTICE
-#
+# find with keyword #changed and #disabled
 # Due to the scope and complexity of this chart, all possible values are
 # not documented in this file. Extensive documentation is available.
 #
@@ -48,7 +48,7 @@ global:
     labels: {}
 
   ## https://docs.gitlab.com/charts/installation/deployment#deploy-the-community-edition
-  edition: ee
+  edition: ce #ee #changed
 
   ## https://docs.gitlab.com/charts/charts/globals#gitlab-version
   gitlabVersion: "16.8.2"
@@ -60,9 +60,9 @@ global:
     allowClusterRoles: true
   ## https://docs.gitlab.com/charts/charts/globals#configure-host-settings
   hosts:
-    domain: example.com
+    domain: decodedevops.com #changed
     hostSuffix:
-    https: true
+    https: false #changed
     externalIP:
     ssh: ~
     gitlab: {}
@@ -73,15 +73,15 @@ global:
     kas: {}
     pages: {}
 
-  ## https://docs.gitlab.com/charts/charts/globals#configure-ingress-settings
+  ## https://docs.gitlab.com/charts/charts/globals#configure-ingress-settings disabled ingress
   ingress:
     apiVersion: ""
-    configureCertmanager: true
+    configureCertmanager: false #disabled
     useNewIngressForCerts: false
     provider: nginx
     # class:
     annotations: {}
-    enabled: true
+    enabled: false #disabled
     tls: {}
     #   enabled: true
     #   secretName:
@@ -587,7 +587,7 @@ global:
 
   ## https://docs.gitlab.com/charts/charts/gitlab/kas/
   kas:
-    enabled: true
+    enabled: false #disabled
     service:
       apiExternalPort: 8153 # port for connections from the GitLab backend
     tls:
@@ -886,11 +886,11 @@ upgradeCheck:
 ## Installation & configuration of jetstack/cert-manager
 ## See requirements.yaml for current version
 certmanager:
-  installCRDs: true
+  installCRDs: false #disabled
   nameOverride: certmanager
   # Install cert-manager chart. Set to false if you already have cert-manager
   # installed or if you are not using cert-manager.
-  install: true
+  install: false #disabled
   # Other cert-manager configurations from upstream
   # See https://github.com/jetstack/cert-manager/blob/master/deploy/charts/cert-manager/README#configuration
   rbac:
@@ -900,7 +900,7 @@ certmanager:
 ## https://docs.gitlab.com/charts/architecture/decisions#nginx-ingress
 ## Installation & configuration of charts/ingress-nginx:
 nginx-ingress: &nginx-ingress
-  enabled: true
+  enabled: false #disables
   tcpExternalConfig: "true"
   controller: &nginx-ingress-controller
     addHeaders:
@@ -966,7 +966,7 @@ nginx-ingress: &nginx-ingress
 #   - Use a different IngressClass name
 nginx-ingress-geo:
   <<: *nginx-ingress
-  enabled: false
+  enabled: false #disabled
   controller:
     <<: *nginx-ingress-controller
     config:
@@ -997,7 +997,7 @@ haproxy:
 ## Installation & configuration of stable/prometheus
 ## See requirements.yaml for current version
 prometheus:
-  install: true
+  install: false #disabled
   rbac:
     create: true
   alertmanager:
@@ -1202,6 +1202,7 @@ postgresql:
 ## Automatic shared secret generation
 ## https://docs.gitlab.com/charts/installation/secrets
 ## https://docs.gitlab.com/charts/charts/shared-secrets.html
+
 shared-secrets:
   enabled: true
   rbac:
@@ -1234,7 +1235,7 @@ shared-secrets:
   annotations: {}
 
 ## Installation & configuration of gitlab/gitlab-runner
-## See requirements.yaml for current version
+## See requirements.yaml for current version #runner configuration
 gitlab-runner:
   install: true
   rbac:

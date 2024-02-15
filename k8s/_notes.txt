@@ -1,0 +1,4 @@
+https://docs.gitlab.com/charts/charts/globals.html
+
+https://gitlab.com/gitlab-org/charts/gitlab/-/tree/master/examples/aws/alb-full.yaml
+
