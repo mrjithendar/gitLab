@@ -1,5 +1,5 @@
 output "acmArn" {
-  value = data.terraform_remote_state.gitops.outputs.acm_arn
+  value = data.terraform_remote_state.ekscluster.outputs.acm_arn
 }
 
 output "logsBucket" {

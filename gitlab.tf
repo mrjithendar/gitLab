@@ -10,7 +10,7 @@ resource "helm_release" "gitlab" {
 data "template_file" "gitlab" {
   template = file("${path.module}/k8s/alb-full.tpl")
   vars = {
-    acm_arn = data.terraform_remote_state.gitops.outputs.acm_arn
+    acm_arn = data.terraform_remote_state.ekscluster.outputs.acm_arn
     logsBucket = data.aws_s3_bucket.logsBucket.bucket
   }
 }
