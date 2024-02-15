@@ -5,6 +5,7 @@ pipeline {
     environment {
         clusterName = "roboshop-eks-cluster-demo"
         awsRegion = "us-east-1"
+        APP       = "gitlab"
     }
 
     parameters {
@@ -28,9 +29,11 @@ pipeline {
                     sh "terraform init -reconfigure"
                     sh "terraform plan -out planfile"
                     sh "terraform apply planfile"
-                    sh "sh kubectl get ingress -lrelease=gitlab -n $APP"
-                    sh "PASSWORD=$(kubectl get secret $APP-$APP-initial-root-password -o jsonpath='{.data.password}' -n $APP)"
-                    sh """sh echo '$APP Credentials Username: admin and Password is: $(echo $PASSWORD | base64 --decode)'"""
+                    sh "sh kubectl get ingress -lrelease=gitlab -n ${APP}"
+                    sh """
+                        PASSWORD=$(kubectl get secret ${APP}-${APP}-initial-root-password -o jsonpath='{.data.password}' -n ${APP})
+                        sh echo '$APP Credentials Username: admin and Password is: $(echo $PASSWORD | base64 --decode)'
+                        """
                 }
             }
         }
