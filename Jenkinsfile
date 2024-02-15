@@ -13,6 +13,7 @@ pipeline {
     }
 
     stages {
+
         stage('Import EKS Cluster') {
             steps {
                 withAWS(credentials: 'awsCreds', region: 'us-east-1') {
@@ -20,6 +21,7 @@ pipeline {
                 }
             }
         }
+
         stage('Deploy gitLab') {
             when {
                 expression {infra == 'create'}
@@ -46,6 +48,7 @@ pipeline {
                 }
             }
         }
+        
     }
     options {
         preserveStashes()
