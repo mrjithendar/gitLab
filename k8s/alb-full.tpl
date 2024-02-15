@@ -20,8 +20,7 @@ global:
     # Common annotations used by kas, registry, and webservice
     annotations:
       alb.ingress.kubernetes.io/backend-protocol: HTTP
-      alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=${logsBucket},access_logs.s3.prefix=eks
-      alb.ingress.kubernetes.io/certificate-arn: {acm_arn} #arn:aws:acm:us-east-1:826334059644:certificate/276bcece-146f-4eb3-9f3d-5372a87671cf
+      alb.ingress.kubernetes.io/certificate-arn: ${acm_arn}
       alb.ingress.kubernetes.io/group.name: roboshop
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
       alb.ingress.kubernetes.io/scheme: internet-facing

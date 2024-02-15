@@ -14,7 +14,3 @@ data "template_file" "gitlab" {
     logsBucket = data.aws_s3_bucket.logsBucket.bucket
   }
 }
-
-output "name" {
-  value = data.terraform_remote_state.gitops.outputs.acm_arn
-}
