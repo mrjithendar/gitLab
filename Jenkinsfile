@@ -31,8 +31,8 @@ pipeline {
                     sh "terraform init -reconfigure"
                     sh "terraform plan -out planfile"
                     sh "terraform apply planfile"
-                    sh "sh kubectl get ingress -lrelease=gitlab -n ${APP}"
-                    sh "sh password.sh"
+                    sh "kubectl get ingress -lrelease=gitlab -n ${APP}"
+                    sh "sh k8s/password.sh"
                 }
             }
         }
@@ -48,7 +48,7 @@ pipeline {
                 }
             }
         }
-        
+
     }
     options {
         preserveStashes()
