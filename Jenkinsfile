@@ -35,7 +35,7 @@ pipeline {
             }
         }
 
-        stage('Deploy gitLab') {
+        stage('Remove gitLab') {
             when {
                 expression {infra == 'delete'}
             }
