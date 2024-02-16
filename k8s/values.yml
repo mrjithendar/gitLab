@@ -1259,6 +1259,18 @@ gitlab-runner:
             BucketName = "runner-cache"
             BucketLocation = "us-east-1"
             Insecure = false
+        [runners.kubernetes]
+        image = "docker:24.0.5"
+        {{- if .Values.global.minio.enabled }}
+        [runners.cache]
+          Type = "s3"
+          Path = "gitlab-runner"
+          Shared = true
+          [runners.cache.s3]
+            ServerAddress = {{ include "gitlab-runner.cache-tpl.s3ServerAddress" . }}
+            BucketName = "runner-cache"
+            BucketLocation = "us-east-1"
+            Insecure = false    
         {{ end }}
   podAnnotations:
     gitlab.com/prometheus_scrape: "true"
