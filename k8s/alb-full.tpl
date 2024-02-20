@@ -16,12 +16,12 @@ global:
   redis:
     auth:
       enabled: false
-    host: redis.roboshop.com
+    host: redis.roboshop.com # external redis elasticache (mapped in route53)
 
   edition: ce #this must be ce or ee
 
   hosts:
-    domain: decodedevops.com
+    domain: decodedevops.com # git works on https://gitlab.decodedevops.com
     # we need a different dns endpoint for webservice and ssh
     ssh: gitlab-shell.decodedevops.com
   ingress:
@@ -87,4 +87,7 @@ registry:
     type: NodePort
 
 redis:
-  install: false
+  install: false # diable default redis using external redis (elasticache)
+
+gitlab-runner:
+  install: false # disable automatic runner installation
