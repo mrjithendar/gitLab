@@ -16,7 +16,7 @@ global:
   redis:
     auth:
       enabled: false
-    host: redis.roboshop.com:6379
+    host: redis.roboshop.com
 
   edition: ce #this must be ce or ee
 
