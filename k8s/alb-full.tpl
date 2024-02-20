@@ -12,11 +12,8 @@ nginx-ingress:
 # Common settings for AWS Load Balancer Controller
 # You've disabled the installation of Redis. When using an external Redis.
 # You must populate `global.redis.host` or `gitlab.redis.redisYmlOverride`.
+
 global:
-  redis:
-    auth:
-      enabled: false
-    host: redis.roboshop.com # external redis elasticache (mapped in route53)
 
   edition: ce #this must be ce or ee
 
