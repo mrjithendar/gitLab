@@ -8,7 +8,7 @@ certmanager:
 
 # Disable nginx-ingress
 nginx-ingress:
-  enabled: true
+  enabled: false
 
 global:
 
@@ -16,8 +16,8 @@ global:
 
   hosts:
     domain: decodedevops.com # git works on https://gitlab.decodedevops.com
-    # we need a different dns endpoint for webservice and ssh
-    ssh: gitlab-shell.decodedevops.com
+    ssh: gitlab-shell.decodedevops.com # we need a different dns endpoint for webservice and ssh
+
   ingress:
     # Common annotations used by kas, registry, and webservice
     annotations:
