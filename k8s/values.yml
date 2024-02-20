@@ -704,13 +704,13 @@ global:
   ## https://docs.gitlab.com/charts/charts/globals#outgoing-email
   ## Outgoing email server settings
   smtp:
-    enabled: false
-    address: smtp.mailgun.org
-    port: 2525
-    user_name: ""
+    enabled: true
+    address: smtp-relay.brevo.com
+    port: 587
+    user_name: "jithendardharmapuri@gmail.com"
     ## https://docs.gitlab.com/charts/installation/secrets#smtp-password
     password:
-      secret: ""
+      secret: "smtp-password"
       key: password
     # domain:
     authentication: "plain"
@@ -723,9 +723,9 @@ global:
   ## https://docs.gitlab.com/charts/charts/globals#outgoing-email
   ## Email persona used in email sent by GitLab
   email:
-    from: ""
+    from: "gitlab@decodedevops.com"
     display_name: GitLab
-    reply_to: ""
+    reply_to: "team@decodedevops.com"
     subject_suffix: ""
     smime:
       enabled: false

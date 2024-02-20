@@ -12,6 +12,40 @@ nginx-ingress:
 
 global:
 
+  ## https://docs.gitlab.com/charts/charts/globals#outgoing-email
+  ## Outgoing email server settings
+  smtp:
+    enabled: true
+    address: smtp-relay.brevo.com
+    port: 587
+    user_name: "jithendardharmapuri@gmail.com"
+    ## https://docs.gitlab.com/charts/installation/secrets#smtp-password
+    password:
+      secret: "smtp-password"
+      key: password
+    # domain:
+    authentication: "plain"
+    starttls_auto: false
+    openssl_verify_mode: "peer"
+    open_timeout: 30
+    read_timeout: 60
+    pool: false
+
+  ## https://docs.gitlab.com/charts/charts/globals#outgoing-email
+  ## Email persona used in email sent by GitLab
+  email:
+    from: "gitlab@decodedevops.com"
+    display_name: GitLab
+    reply_to: "team@decodedevops.com"
+    subject_suffix: ""
+    smime:
+      enabled: false
+      secretName: ""
+      keyName: "tls.key"
+      certName: "tls.crt"
+
+  time_zone: UTC ## Timezone for containers.
+
   edition: ce #this must be ce or ee
 
   hosts:
