@@ -83,8 +83,5 @@ registry:
   service:
     type: NodePort
 
-redis:
-  install: false # diable default redis using external redis (elasticache)
-
 gitlab-runner:
   install: false # disable automatic runner installation
