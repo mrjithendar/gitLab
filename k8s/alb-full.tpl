@@ -11,7 +11,12 @@ nginx-ingress:
   enabled: false
 # Common settings for AWS Load Balancer Controller
 global:
+  redis:
+    auth:
+      enabled: false
+
   edition: ce #this must be ce or ee
+
   hosts:
     domain: decodedevops.com
     # we need a different dns endpoint for webservice and ssh
@@ -77,3 +82,7 @@ registry:
   enabled: true
   service:
     type: NodePort
+
+redis:
+  install: false
+  host: redis.roboshop.com:6379
