@@ -8,10 +8,7 @@ certmanager:
 
 # Disable nginx-ingress
 nginx-ingress:
-  enabled: false
-# Common settings for AWS Load Balancer Controller
-# You've disabled the installation of Redis. When using an external Redis.
-# You must populate `global.redis.host` or `gitlab.redis.redisYmlOverride`.
+  enabled: true
 
 global:
 
